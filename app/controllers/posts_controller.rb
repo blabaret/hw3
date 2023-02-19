@@ -1,8 +1,8 @@
-class ContactsController < ApplicationController
+class PostsController < ApplicationController
 
     def show
-      @post = Posts.find_by({ "id" => params["id"] })
-      @place = Place.find_by({ "id" => @contact["place_id"] })
+      @post = Post.find_by({ "id" => params["id"] })
+      @place = Place.find_by({ "id" => @post["place_id"] })
     end
   
     def new
@@ -13,9 +13,10 @@ class ContactsController < ApplicationController
   
     def create
       @post = Post.new
-      @post["title"] = params["contact"]["title"]
-      @post["body"] = params["contact"]["body"]
-      @post["date"] = params["contact"]["date"]
+      @post["title"] = params["post"]["title"]
+      @post["description"] = params["post"]["description"]
+      @post["posted_on"] = params["post"]["posted_on"]
+      @post["place_id"] = params["post"]["place_id"]
       @post.save
       redirect_to "/places/#{@post["place_id"]}"
     end

@@ -1,1 +1,13 @@
-<h1>Things I did at <%= @place["name"]%></h1>
+<h1>Places I've visited</h1>
+
+<ul>
+  <% for post in @posts%>  
+    <li>
+      <a href="/posts/<%=post["id"]%>"><%= place["name"] %></a>
+    </li>
+  <% end %>
+</ul>
+
+<p>
+  <a href="/posts/new">Add new post</a>
+</p>

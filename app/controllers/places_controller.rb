@@ -1,4 +1,4 @@
-class CompaniesController < ApplicationController
+class PlacesController < ApplicationController
 
     def index
       @places = Place.all

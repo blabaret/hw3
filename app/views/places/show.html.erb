@@ -1,11 +1,13 @@
 <h1><%= @place["name"] %></h1>
 
+<p><a href="/posts/new">Add post for <%= @place["name"]%></a></p>
+
 <ul>
-    <% for contact in @contacts %>
+    <% for post in @posts %>
         <li>
-            <%= "#{posts["title"]}%>
-            <%= "#{posts["date"]}%>
-            <%= "#{posts["body"]}%>
+            <%= post["title"] %>
+            <%= post["description"] %>
+            <%= post["posted_on"] %>
         </li>
     <% end %>
 </ul>
@@ -16,4 +18,5 @@
 
 
 
-<a href="/contacts/new">Add contact for <%= @company["name"]%></a>
+
+<p><%= button_to "Delete this place", @place, :method => "delete" %></p>
