@@ -9,6 +9,7 @@ class PostsController < ApplicationController
       @post = Post.new
       @place = Place.find_by({ "id" => params["place_id"] })
       @post["place_id"] = @place["id"]
+      
     end
   
     def create
@@ -21,5 +22,11 @@ class PostsController < ApplicationController
       redirect_to "/places/#{@post["place_id"]}"
     end
   
+    def destroy
+      @post = Post.find_by({ "place_id" => @place["id"]})
+      @post.destroy
+      redirect_to "/places/#{@place["id"]}"
+    end
+
   end
   
